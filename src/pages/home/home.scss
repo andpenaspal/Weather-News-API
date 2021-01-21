@@ -1,0 +1,44 @@
+page-home {
+
+}
+
+//Whole Weather Div: Show title and locations in columns
+.weatherWrapper{
+    display: flex;
+    flex-direction: column;
+}
+//Locations container: Display flex to show them in parallel
+.weatherContainer{
+    display: flex;
+}
+//Each Location Item
+.weatherItem{
+    margin: 0 15px 15px 15px;
+    text-align: center;
+}
+
+.weatherImg{
+    height: 100px;
+    width: 100px;
+}
+//On mobile, column display
+@media screen and (max-width: 350px) {
+    .weatherContainer{
+        flex-direction: column;
+    }
+}
+//et rid of the underline on the description
+.newLabelDescription{
+    text-decoration: none;
+}
+//Buttons on the middle of the page and information in vertical align
+.newsButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//Space the buttons a little
+.newsButtons button{
+    margin-left: 10px;
+    margin-right: 10px;
+}

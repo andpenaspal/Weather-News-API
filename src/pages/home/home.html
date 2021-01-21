@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      G00376379
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Div with the Message Display: Hidden on demand -->
+  <div [hidden]="initialMessageHidden">
+    <h3>{{initialMessage}}</h3>
+  </div>
+
+  <!-- Weather Section -->
+  <!-- Div with the Weather Display: Hidden on demand -->
+  <div class="weatherWrapper" [hidden]="weatherContainerHidden">
+    <div class="weatherTitle">
+      <h2>Weather for:</h2>
+    </div>
+    <!-- Container for the locations -->
+    <div class="weatherContainer">
+      <!-- Div for each location, with *ngFor to display all available (Template) -->
+      <div  class="weatherItem" *ngFor="let location of locationsArray">
+        <h2>{{ location.location }}</h2>
+
+        <img [src]="location.icon" class="weatherImg">
+        <p>{{ location.weather }}</p>
+        <p>({{ location.description }})</p>
+
+        <h3>Temperature: {{ location.temperature }} <span [innerHTML]="weatherSymbol"></span></h3>
+        <p>Feels like: ({{ location.feels }} <span [innerHTML]="weatherSymbol"></span>)</p>
+      </div>
+      <br>
+    </div>
+  </div>
+  <hr>
+
+  <!-- News Section -->
+  <!-- Button to display the news -->
+  <button ion-button [disabled]="newsDisabled" (click)="showNews()">NEWS</button>
+  <br><br>
+  <!-- Div with the News -->
+  <div [hidden]="hideNews">
+    <!-- General Information about the news -->
+    <h4>Total News Stories from {{ newsCountry }}: {{ numberOfArticles }}</h4>
+    <p>(Showing Page {{currentPageNews}} of {{numberOfPages}} - News {{firstNew + 1}} to {{lastNew}})</p>
+    <!-- List with Items on Template and *ngFor to show the requested -->
+    <ion-list>
+      <ion-item *ngFor="let new of newsToShow" text-wrap> <!-- Wrap to break line on overflow -->
+        <!-- Thumbnail with Information as Label -->    
+        <ion-thumbnail item-start [hidden]="!new.urlToImage"> <!-- Do not display if there's no IMG -->
+          <a [href]="new.url" target="_blank"><img [src]="new.urlToImage" ></a> <!-- Links to new tab -->
+        </ion-thumbnail>
+        <ion-label>
+          <a [href]="new.url" target="_blank"><h2>{{ new.title }}</h2></a>
+          <a [href]="new.url" target="_blank" class="newLabelDescription"><p>{{ new.description }}</p></a>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <!-- Buttons for Previous/Next Page on the News -->
+      <!-- Disabled on Options related to which page displayed -->
+    <div class="newsButtons">
+      <button ion-button (click)="previousPageNews()" [disabled]="disablePreviousButton"><<</button>
+      <span>{{currentPageNews}} of {{numberOfPages}}</span>
+      <button ion-button (click)="nextPageNews()" [disabled]="disableNextButton">>></button>
+    </div>
+  </div>
+</ion-content>

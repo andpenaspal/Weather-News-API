@@ -1,0 +1,86 @@
+<!--
+  Generated template for the SettPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Whole form to submit on Save -->
+  <!-- Store the values of the form on the "sett" object on submit -->
+    <!-- each ngModel stores the individual values in the different properties of the object -->
+  <form (ngSubmit)="setSettings(sett)">
+    <!--Whole List for the Form-->
+    <ion-list>
+      <!-- Weather -->
+      <h4>City</h4>
+      <!--Toggle for Weather Comparison-->
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary">Compare Weather</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="sett.statusToggle" name="toggle"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <!--City: Always visible-->
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" stacked>City:</ion-label>
+            <ion-input type="text" [(ngModel)]="sett.location" name="location" placeholder="Enter City"></ion-input>
+          </ion-item>
+          <!--Show Option to select which city get News from only in Compare Toggle active-->
+          <!-- Radio button for News on City -->
+          <ion-item [hidden]="!sett.statusToggle">
+            <ion-label>News</ion-label>
+            <ion-radio value="news1" (ionSelect)="handleNewsOption()" [checked]="news1handler"></ion-radio>
+          </ion-item>
+        </ion-list>
+      <!--City 2: Visible on Active Toggle-->
+      <ion-list [hidden]="!sett.statusToggle">
+        <!-- Input for Second City -->
+        <ion-item>
+          <ion-label color="primary" stacked>Second City:</ion-label>
+          <ion-input type="text" [(ngModel)]="sett.location2" name="location2" placeholder="Enter Second City"></ion-input>
+        </ion-item>
+        <!-- Radio button for Selecting the news of the second city -->
+        <ion-item>
+          <ion-label>News</ion-label>
+          <ion-radio value="news2" (ionSelect)="handleNewsOption()" [checked]="news2handler"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <!-- 
+        Radio Buttons for News managed programmatically
+        Radio Buttons for Units as Radio Group, managed by itself
+       -->
+
+      <!-- Units Options -->
+      <h4>Settings</h4>
+      <!--List for the radio buttons Group-->
+      <!-- Store the value checked on the "unit" key of the Sett Object -->
+      <ion-list radio-group [(ngModel)]="sett.unit" name="unit">
+        <ion-list-header>
+          Units:
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Standard</ion-label>
+          <ion-radio value="standard"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Metric</ion-label>
+          <ion-radio value="metric" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Imperial</ion-label>
+          <ion-radio value="imperial"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <!--Button - Submit Form-->
+      <button ion-button type="submit">Save</button>
+    </ion-list>
+  </form>
+</ion-content>
