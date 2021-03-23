@@ -9,13 +9,13 @@ Ionic Application to access the Weather and News of a chosen location. Client in
 * https://openweathermap.org
 * https://newsapi.org
 
+## Technologies
+Ionic, TypeScript, HTTP Calls, JSON Manipulation, HTML, CSS
+
 ## Special Features
 * Compare Weather of two locations.
 * Choose from which location the News will be shown (only if Compare Weather is activated)
 * Pagination on the News Display
-
-## Technologies
-Ionic, TypeScript, HTTP Calls, JSON Manipulation, HTML, CSS
 
 ## Usage
 #### Open the Mobile Application
