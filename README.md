@@ -5,7 +5,9 @@
 ##### Version: 1.0 (Jan 2021)
 
 ## Summary
-Ionic Application to access the Weather and News of a chosen location.
+Ionic Application to access the Weather and News of a chosen location. Client interface that consumes the following APIs:
+* https://openweathermap.org
+* https://newsapi.org
 
 ## Special Features
 * Compare Weather of two locations.
@@ -13,7 +15,7 @@ Ionic Application to access the Weather and News of a chosen location.
 * Pagination on the News Display
 
 ## Technologies
-Ionic, TypeScript, HTTPCalls, JSON, HTML, CSS
+Ionic, TypeScript, HTTP Calls, JSON Manipulation, HTML, CSS
 
 ## Usage
 #### Open the Mobile Application
@@ -51,6 +53,9 @@ The news for the Location (chosen) will be shown
 #### Pagination
 
 <img src="https://imgur.com/jgfIXK3.jpeg" alt="HomePage" width="300"/>
+
+## License
+MIT License. See "LICENSE" for further information.
 
 ## Contact Information
 G00376379@gmit.ie
